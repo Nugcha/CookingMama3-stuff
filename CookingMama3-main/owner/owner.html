@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Owner HQ – Cooking Mama</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="owner.css"/>
+</head>
+<body>
+<div id="authLoader"><div class="spinner"></div></div>
+
+<nav id="mainNav" style="display:none; position:relative;">
+  <img class="nav-logo" src="../assets/logonav.jpg" alt="Cooking Mama" onclick="window.scrollTo(0,0)"/>
+  <span class="nav-title">Owner HQ</span>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn">Light Mode</button>
+    <div class="nav-dropdown">
+      <button class="nav-dd-btn" id="navDdBtn">Navigate</button>
+      <div class="nav-dd-menu" id="navDdMenu">
+        <button class="nav-dd-item" onclick="window.location.href='../customer/customer.html'">Customer Menu</button>
+        <button class="nav-dd-item" onclick="window.location.href='../chef/chef.html'">Chef Dashboard</button>
+        <button class="nav-dd-item" onclick="window.location.href='../manager/manager.html'">Manager</button>
+        <button class="nav-dd-item" onclick="window.location.href='../employee/employee.html'">Time Tracker</button>
+      </div>
+    </div>
+    <div class="user-pill">
+      <img id="navAvatar" src="" alt="avatar"/>
+      <span id="navName">Owner</span>
+    </div>
+    <button class="sign-out-btn" id="btnSignOut">Sign Out</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</nav>
+
+<div id="pageContent" style="display:none">
+  <div class="hero">
+    <h1>Owner HQ</h1>
+    <p>Revenue, wages, inventory costs and net profit at a glance</p>
+  </div>
+
+  <div class="main-wrap">
+    <!-- KPI cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        
+        <div class="kpi-label">Total Revenue</div>
+        <div class="kpi-val income" id="kpiRevenue">$0.00</div>
+        <div class="kpi-sub" id="kpiOrderCount">0 orders</div>
+      </div>
+      <div class="kpi-card">
+  
+        <div class="kpi-label">Employee Wages</div>
+        <div class="kpi-val expense" id="kpiWages">$0.00</div>
+        <div class="kpi-sub" id="kpiHoursTotal">0 hrs logged</div>
+      </div>
+      <div class="kpi-card">
+       
+        <div class="kpi-label">Inventory Cost</div>
+        <div class="kpi-val expense" id="kpiInvCost">$0.00</div>
+        <div class="kpi-sub" id="kpiInvItems">0 items</div>
+      </div>
+      <div class="kpi-card">
+        
+        <div class="kpi-label">Net Profit</div>
+        <div class="kpi-val profit" id="kpiProfit">$0.00</div>
+        <div class="kpi-sub" id="kpiMargin">Margin: 0%</div>
+      </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Order Revenue</h2>
+        <span class="section-badge" id="ordBadge">0 orders</span>
+      </div>
+      <div class="orders-list" id="ordersList">
+        <div class="empty-list">No orders yet</div>
+      </div>
+    </div>
+
+    <!-- Wages -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Employee Wages</h2>
+        <span class="section-badge" id="empBadge">0 employees</span>
+      </div>
+      <table class="wages-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Total Hrs</th>
+            <th>Rate/hr</th>
+            <th>Owed</th>
+          </tr>
+        </thead>
+        <tbody id="wagesBody">
+          <tr><td colspan="5" class="empty-list">No time sessions logged yet</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Per-role hourly rate settings -->
+      <div class="rate-settings-section">
+        <div class="rate-settings-title">Set Hourly Rate by Role</div>
+        <div class="rate-grid">
+          <div class="rate-row">
+            <div class="rate-role-label">Owner</div>
+            <div class="rate-input-wrap">
+              <span class="rate-dollar">$</span>
+              <input class="wage-input" id="rate-Owner" type="number" min="0" step="0.5" value="25.00"/>
+            </div>
+            <div class="rate-per-hr">/ hr</div>
+          </div>
+          <div class="rate-row">
+            <div class="rate-role-label">Manager</div>
+            <div class="rate-input-wrap">
+              <span class="rate-dollar">$</span>
+              <input class="wage-input" id="rate-Manager" type="number" min="0" step="0.5" value="20.00"/>
+            </div>
+            <div class="rate-per-hr">/ hr</div>
+          </div>
+          <div class="rate-row">
+            <div class="rate-role-label">Chef</div>
+            <div class="rate-input-wrap">
+              <span class="rate-dollar">$</span>
+              <input class="wage-input" id="rate-Chef" type="number" min="0" step="0.5" value="18.00"/>
+            </div>
+            <div class="rate-per-hr">/ hr</div>
+          </div>
+          <div class="rate-row">
+            <div class="rate-role-label">Waiter</div>
+            <div class="rate-input-wrap">
+              <span class="rate-dollar">$</span>
+              <input class="wage-input" id="rate-Waiter" type="number" min="0" step="0.5" value="15.00"/>
+            </div>
+            <div class="rate-per-hr">/ hr</div>
+          </div>
+          <div class="rate-row">
+            <div class="rate-role-label">Staff</div>
+            <div class="rate-input-wrap">
+              <span class="rate-dollar">$</span>
+              <input class="wage-input" id="rate-Staff" type="number" min="0" step="0.5" value="14.00"/>
+            </div>
+            <div class="rate-per-hr">/ hr</div>
+          </div>
+        </div>
+        <div class="rate-save-row">
+          <button class="wage-save-btn" id="wageRateSave">Save All Rates</button>
+          <span class="rate-save-hint">Changes apply to all wage calculations immediately</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inventory -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Inventory Expenses</h2>
+        <span class="section-badge" id="invBadge">0 items</span>
+      </div>
+      <div class="inv-summary" id="invList">
+        <div class="empty-list">No inventory items</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recipe accordion -->
+  <div class="recipe-section">
+    <div class="recipe-accordion">
+      <div class="recipe-acc-header" id="recipeAccHeader">
+        <h2>Recipes, Ingredients &amp; Allergy Info</h2>
+        <span class="recipe-acc-arrow" id="recipeAccArrow">▼</span>
+      </div>
+      <div class="recipe-acc-body hidden" id="recipeAccBody"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="owner.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Time Tracker – Cooking Mama</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared-nav.css"/>
+  <link rel="stylesheet" href="employee.css"/>
+</head>
+<body>
+<div id="authLoader"><div class="spinner"></div></div>
+
+<nav id="mainNav" style="display:none; position:relative;">
+  <img class="nav-logo" src="../assets/logonav.jpg" alt="Cooking Mama"/>
+  <span class="nav-title">Time Tracker</span>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn">Light Mode</button>
+    <div class="nav-dropdown" id="navDropdown" style="display:none">
+      <button class="nav-dd-btn" id="navDdBtn">Navigate</button>
+      <div class="nav-dd-menu" id="navDdMenu"></div>
+    </div>
+    <div class="user-pill"><img id="navAvatar" src="" alt="avatar"/><span id="navName">Staff</span></div>
+    <button class="sign-out-btn" id="btnSignOut">Sign Out</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</nav>
+
+<div id="pageContent" style="display:none">
+  <div class="hero">
+    <h1>Time Clock</h1>
+    <p>Clock in when you arrive, clock out when you leave</p>
+  </div>
+
+  <div class="main-wrap">
+
+    <div class="shift-summary" id="shiftSummary">
+      <div class="shift-summary-icon">&#10003;</div>
+      <div class="shift-info">
+        <h3>Shift Complete</h3>
+        <p id="shiftSummaryText"></p>
+      </div>
+    </div>
+
+    <!-- Active staff -->
+    <div class="active-card">
+      <div class="active-header">
+        <h2>Currently On Shift</h2>
+        <span class="online-badge" id="onlineCount">0 online</span>
+      </div>
+      <div class="active-grid" id="activeGrid">
+        <div class="empty-active">No staff currently clocked in</div>
+      </div>
+    </div>
+
+    <!-- Clock widget -->
+    <div class="clock-card">
+      <div class="emp-name-big" id="empNameBig">Loading</div>
+      <div class="role-tag" id="roleTag">Staff</div>
+      <div class="clock-display" id="clockDisplay">00:00:00</div>
+      <div class="clock-status" id="clockStatus">Not clocked in</div>
+      <div class="clock-buttons">
+        <button class="clock-in-btn" id="clockInBtn">Clock In</button>
+        <button class="clock-out-btn" id="clockOutBtn" disabled>Clock Out</button>
+      </div>
+    </div>
+
+    <!-- My shift history -->
+    <div class="sessions-card">
+      <div class="sessions-header">
+        <h2>My Shift History</h2>
+        <span class="total-hrs-badge" id="totalHrsLabel">0h total</span>
+      </div>
+      <table class="sessions-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Clock In</th>
+            <th>Clock Out</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="sessionsBody">
+          <tr><td colspan="4" class="empty-sessions">No shifts yet. Clock in to get started.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="employee.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cooking Mama – Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="customer.css"/>
+  <link rel="stylesheet" href="../shared-nav.css"/>
+</head>
+<body>
+<div id="authLoader"><div class="spinner"></div></div>
+
+<nav id="mainNav" style="display:none; position:relative;">
+  <img class="nav-logo" src="../assets/logonav.jpg" alt="Cooking Mama" onclick="window.scrollTo(0,0)"/>
+  <span class="nav-title">Cooking Mama</span>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn">Dark Mode</button>
+    <button class="cart-btn" id="cartBtn">Cart <span class="cart-count" id="cartCount">0</span></button>
+    <div class="user-pill"><img id="navAvatar" src="" alt="avatar"/><span id="navName">Guest</span></div>
+    <button class="sign-out-btn" id="btnSignOut">Sign Out</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="theme-btn" id="mobileThemeBtn">Dark Mode</button>
+    <button class="sign-out-btn" id="mobileSignOut">Sign Out</button>
+  </div>
+</nav>
+
+<div id="pageContent" style="display:none">
+  <div class="hero">
+    <h1>Mama's Menu</h1>
+    <p>Get your cooking from Mama!</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-cat="all">All</button>
+    <button class="tab" data-cat="appetizer">Appetizers</button>
+    <button class="tab" data-cat="main">Mains</button>
+    <button class="tab" data-cat="dessert">Desserts</button>
+    <button class="tab" data-cat="drink">Drinks</button>
+  </div>
+
+  <div class="menu-section">
+    <div class="category-group" data-group="appetizer">
+      <div class="section-title">Appetizers</div>
+      <div class="menu-grid" id="grid-appetizer"></div>
+    </div>
+    <div class="category-group" data-group="main">
+      <div class="section-title">Main Courses</div>
+      <div class="menu-grid" id="grid-main"></div>
+    </div>
+    <div class="category-group" data-group="dessert">
+      <div class="section-title">Desserts</div>
+      <div class="menu-grid" id="grid-dessert"></div>
+    </div>
+    <div class="category-group" data-group="drink">
+      <div class="section-title">Drinks</div>
+      <div class="menu-grid" id="grid-drink"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>Your Order</h2>
+    <button class="close-cart" id="closeCart">x</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Your cart is empty. Tap a dish to add it.</div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-row"><span>Subtotal</span><span id="subtotalVal">$0.00</span></div>
+    <div class="cart-row"><span>Tax (6.625%)</span><span id="taxVal">$0.00</span></div>
+    <div class="cart-row total"><span>Total</span><span id="totalVal">$0.00</span></div>
+    <button class="checkout-btn" id="checkoutBtn">Place Order</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="customer.js"></script>
+</body>
+</html>
+

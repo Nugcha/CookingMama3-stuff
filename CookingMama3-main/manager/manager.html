@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manager – Cooking Mama</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared-nav.css"/>
+  <link rel="stylesheet" href="manager.css"/>
+</head>
+<body>
+<div id="authLoader"><div class="spinner"></div></div>
+
+<nav id="mainNav" style="display:none; position:relative;">
+  <img class="nav-logo" src="../assets/logonav.jpg" alt="Cooking Mama"/>
+  <span class="nav-title">Manager Dashboard</span>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn">Light Mode</button>
+    <div class="nav-dropdown" id="navDropdown" style="display:none">
+      <button class="nav-dd-btn" id="navDdBtn">Navigate</button>
+      <div class="nav-dd-menu" id="navDdMenu"></div>
+    </div>
+    <div class="user-pill"><img id="navAvatar" src="" alt="avatar"/><span id="navName">Manager</span></div>
+    <button class="sign-out-btn" id="btnSignOut">Sign Out</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</nav>
+
+<div id="pageContent" style="display:none">
+  <div class="hero">
+    <h1>Inventory Control</h1>
+    <p>Manage stock levels, track costs, and prevent shortages</p>
+  </div>
+  <div class="main-wrap">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val" id="statTotal">0</div><div class="stat-lbl">Total Items</div></div>
+      <div class="stat-card"><div class="stat-val" id="statLow">0</div><div class="stat-lbl">Low Stock</div></div>
+      <div class="stat-card"><div class="stat-val" id="statCost">$0</div><div class="stat-lbl">Total Inv. Cost</div></div>
+    </div>
+    <div class="form-card">
+      <h2>Add Inventory Item</h2>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Item Name</label><input class="form-input" id="iName" type="text" placeholder="e.g. Tomatoes"/></div>
+        <div class="form-group"><label class="form-label">Quantity</label><input class="form-input" id="iQty" type="number" min="0" placeholder="50"/></div>
+        <div class="form-group"><label class="form-label">Cost ($)</label><input class="form-input" id="iCost" type="number" min="0" step="0.01" placeholder="20.00"/></div>
+        <button class="add-item-btn" id="addItemBtn">Add Item</button>
+      </div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-header"><h2>Current Inventory</h2><span class="inv-count" id="invCount">0 items</span></div>
+      <table class="inv-table">
+        <thead><tr><th>Item</th><th>Quantity</th><th>Cost</th><th>Status</th><th>Remove</th></tr></thead>
+        <tbody id="invBody"><tr><td colspan="5" class="empty-inv">No inventory items yet.</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="recipe-section">
+    <div class="recipe-accordion">
+      <div class="recipe-acc-header" id="recipeAccHeader">
+        <h2>Recipes, Ingredients &amp; Allergy Info</h2>
+        <span class="recipe-acc-arrow" id="recipeAccArrow">v</span>
+      </div>
+      <div class="recipe-acc-body hidden" id="recipeAccBody"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="manager.js"></script>
+</body>
+</html>
+
+

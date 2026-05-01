@@ -1,0 +1,168 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F2F7FF;
+  --bg2: #E8EFF8;
+  --card: #FFFFFF;
+  --card2: #F2F7FF;
+  --nav-bg: #FFFFFF;
+  --nav-border: #CDD8EE;
+  --text: #1A2340;
+  --text2: #556080;
+  --accent: #3A8FB5;
+  --accent2: #2A6F8A;
+  --green: #2D8A4E;
+  --green2: #1A6634;
+  --red: #C0392B;
+  --red2: #922B21;
+  --yellow: #8A6200;
+  --shadow: rgba(40,90,150,0.07);
+  --border: #CDD8EE;
+}
+[data-theme="dark"] {
+  --bg: #0A0E1A;
+  --bg2: #0F1525;
+  --card: #161D35;
+  --card2: #1C2540;
+  --nav-bg: #0F1525;
+  --nav-border: #252D50;
+  --text: #D8E4FF;
+  --text2: #6070A0;
+  --accent: #7EC8E3;
+  --accent2: #4A9BB5;
+  --green: #69D08A;
+  --green2: #2D8A4E;
+  --red: #FF6B8A;
+  --red2: #C0392B;
+  --yellow: #FFD54F;
+  --shadow: rgba(80,120,200,0.1);
+  --border: #252D50;
+}
+
+html, body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background .3s, color .3s; }
+
+.hero { text-align: center; padding: 28px 16px 8px; }
+.hero h1 { font-family: 'Pacifico', cursive; font-size: 1.75rem; color: var(--accent); }
+.hero p { color: var(--text2); font-weight: 600; margin-top: 4px; font-size: 0.9rem; }
+
+.main-wrap { max-width: 820px; margin: 0 auto; padding: 18px 16px 80px; display: flex; flex-direction: column; gap: 18px; }
+
+/* Shift summary banner */
+.shift-summary {
+  background: var(--card); border: 1px solid var(--green2); border-radius: 12px;
+  padding: 14px 18px; display: none; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.shift-summary.show { display: flex; }
+.shift-summary-icon { font-size: 1.6rem; color: var(--green); }
+.shift-info h3 { font-family: 'Pacifico', cursive; font-size: 0.95rem; color: var(--green); margin-bottom: 2px; }
+.shift-info p { font-size: 0.83rem; font-weight: 700; color: var(--text2); }
+.shift-info strong { color: var(--text); }
+
+/* Active staff panel */
+.active-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.active-header { padding: 12px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.active-header h2 { font-family: 'Pacifico', cursive; font-size: 0.95rem; color: var(--accent); }
+.online-badge {
+  background: rgba(45,138,78,0.1); color: var(--green);
+  border: 1px solid var(--green); border-radius: 5px;
+  padding: 3px 10px; font-size: 0.72rem; font-weight: 900;
+}
+.active-grid { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; }
+.active-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 12px; min-width: 140px;
+}
+.active-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.active-name { font-weight: 800; font-size: 0.83rem; color: var(--text); }
+.active-role { font-size: 0.7rem; color: var(--text2); font-weight: 700; }
+.active-time { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--accent); }
+.empty-active { text-align: center; padding: 20px; color: var(--text2); font-weight: 700; font-size: 0.86rem; }
+
+/* Clock card */
+.clock-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;
+}
+.emp-name-big { font-family: 'Pacifico', cursive; font-size: 1.35rem; color: var(--accent); }
+.role-tag {
+  background: var(--card2); border: 1px solid var(--border); border-radius: 5px;
+  padding: 3px 14px; font-size: 0.76rem; font-weight: 800; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.clock-display {
+  font-family: 'Share Tech Mono', monospace; font-size: 3rem;
+  color: var(--text); letter-spacing: 0.06em; line-height: 1;
+  padding: 12px 24px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 12px; min-width: 260px;
+  transition: color .3s, border-color .3s;
+}
+.clock-display.running { color: var(--green); border-color: var(--green2); }
+.clock-status { font-size: 0.84rem; font-weight: 700; color: var(--text2); }
+.clock-status.on { color: var(--green); font-weight: 900; }
+.clock-buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.clock-in-btn {
+  background: var(--green2); border: none; border-radius: 8px; padding: 11px 32px;
+  font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 900; color: #fff; cursor: pointer;
+}
+.clock-in-btn:hover { opacity: 0.9; }
+.clock-out-btn {
+  background: var(--red2); border: none; border-radius: 8px; padding: 11px 32px;
+  font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 900; color: #fff; cursor: pointer;
+}
+.clock-out-btn:hover { opacity: 0.9; }
+.clock-out-btn:disabled, .clock-in-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+/* Sessions table */
+.sessions-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.sessions-header {
+  padding: 12px 18px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sessions-header h2 { font-family: 'Pacifico', cursive; font-size: 0.95rem; color: var(--accent); }
+.total-hrs-badge {
+  background: rgba(138,98,0,0.08); color: var(--yellow);
+  border: 1px solid var(--yellow); border-radius: 5px;
+  padding: 3px 10px; font-size: 0.74rem; font-weight: 900;
+}
+[data-theme="dark"] .total-hrs-badge { color: #FFD54F; border-color: #FFD54F; background: rgba(255,213,79,0.08); }
+
+.sessions-table { width: 100%; border-collapse: collapse; }
+.sessions-table th {
+  padding: 9px 14px; text-align: left; font-size: 0.68rem; font-weight: 900;
+  color: var(--text2); text-transform: uppercase; letter-spacing: 0.07em;
+  border-bottom: 1px solid var(--border); background: var(--card2);
+}
+.sessions-table td { padding: 11px 14px; font-size: 0.84rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); }
+.sessions-table tr:last-child td { border-bottom: none; }
+
+.earned-badge {
+  background: rgba(45,138,78,0.1); color: var(--green);
+  border: 1px solid var(--green); border-radius: 5px;
+  padding: 2px 8px; font-size: 0.72rem; font-weight: 900;
+}
+[data-theme="dark"] .earned-badge { color: #69D08A; border-color: #69D08A; background: rgba(105,208,138,0.1); }
+
+.hrs-badge {
+  background: rgba(138,98,0,0.08); color: var(--yellow);
+  border: 1px solid var(--yellow); border-radius: 5px;
+  padding: 2px 8px; font-size: 0.7rem; font-weight: 900;
+}
+[data-theme="dark"] .hrs-badge { color: #FFD54F; border-color: #FFD54F; }
+.empty-sessions { text-align: center; padding: 30px; color: var(--text2); font-weight: 700; }
+
+.total-earnings-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 18px; border-top: 1px solid var(--border);
+  background: var(--card2);
+}
+.total-earnings-label { font-size: 0.82rem; font-weight: 800; color: var(--text2); text-transform: uppercase; letter-spacing: 0.05em; }
+.total-earnings-val { font-family: 'Share Tech Mono', monospace; font-size: 1.1rem; font-weight: 900; color: var(--green); }
+
+#authLoader { position: fixed; inset: 0; background: var(--bg); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+.spinner { width: 38px; height: 38px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(30px); background: var(--text); color: var(--bg); padding: 10px 22px; border-radius: 6px; font-size: 0.84rem; font-weight: 700; z-index: 500; opacity: 0; transition: opacity 0.25s, transform 0.25s; pointer-events: none; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 500px) { .clock-display { font-size: 2.2rem; min-width: 200px; padding: 10px 14px; } }

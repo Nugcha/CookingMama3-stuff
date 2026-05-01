@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chef Dashboard – Cooking Mama</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared-nav.css"/>
+  <link rel="stylesheet" href="chef.css"/>
+</head>
+<body>
+<div id="authLoader"><div class="spinner"></div></div>
+
+<nav id="mainNav" style="display:none; position:relative;">
+  <img class="nav-logo" src="../assets/logonav.jpg" alt="Cooking Mama"/>
+  <span class="nav-title">Chef Dashboard</span>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn">Light Mode</button>
+    <div class="nav-dropdown" id="navDropdown" style="display:none">
+      <button class="nav-dd-btn" id="navDdBtn">Navigate</button>
+      <div class="nav-dd-menu" id="navDdMenu"></div>
+    </div>
+    <div class="user-pill"><img id="navAvatar" src="" alt="avatar"/><span id="navName">Chef</span></div>
+    <button class="sign-out-btn" id="btnSignOut">Sign Out</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</nav>
+
+<div id="pageContent" style="display:none">
+  <div class="hero">
+    <h1>Kitchen Kiosk</h1>
+    <p>Incoming orders, oldest to newest. Click an order to manage it.</p>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="ftab active" data-filter="all">All Orders</button>
+    <button class="ftab" data-filter="pending">Pending</button>
+    <button class="ftab" data-filter="cooking">Cooking</button>
+    <button class="ftab" data-filter="ready">Ready</button>
+    <button class="ftab" data-filter="completed">Completed</button>
+  </div>
+
+  <div class="orders-wrap" id="ordersWrap">
+    <div class="empty-state">Loading orders...</div>
+  </div>
+
+  <div class="recipe-section">
+    <div class="recipe-accordion">
+      <div class="recipe-acc-header" id="recipeAccHeader">
+        <h2>Recipes &amp; Allergy Info</h2>
+        <span class="recipe-acc-arrow" id="recipeAccArrow">v</span>
+      </div>
+      <div class="recipe-acc-body hidden" id="recipeAccBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">Order</div>
+        <div style="font-size:.76rem;color:var(--text2);margin-top:4px" id="modalMeta"></div>
+      </div>
+      <button class="modal-close" id="modalClose">x</button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="modal-sec-title">Items Ordered</div>
+        <div class="modal-items" id="modalItems"></div>
+      </div>
+      <div class="modal-totals" id="modalTotals"></div>
+      <div class="status-controls">
+        <div class="status-label">Update Status</div>
+        <div class="status-buttons">
+          <button class="s-btn pending"   data-status="pending">Pending</button>
+          <button class="s-btn cooking"   data-status="cooking">Cooking</button>
+          <button class="s-btn ready"     data-status="ready">Ready</button>
+          <button class="s-btn completed" data-status="completed">Done</button>
+        </div>
+        <button class="complete-btn" id="completeBtn">Mark as Completed</button>
+        <button class="delete-btn"   id="deleteBtn">Delete This Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="chef.js"></script>
+</body>
+</html>
+
